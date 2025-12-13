@@ -1,0 +1,19 @@
+[alias]
+	s = status
+	o = checkout
+	co = checkout
+	nb = checkout -b
+	ff = pull --ff-only
+	behind = rev-list --count
+	ddb = branch -D
+	db = branch -d
+	l = log --oneline --graph
+	c = commit
+	b = branch
+	m = merge
+	f = fetch
+[push]
+	autoSetupRemote = 1
+[include]
+	path = ~/org.gitconfig
+	path = ~/private.gitconfig
