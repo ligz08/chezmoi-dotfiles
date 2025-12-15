@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 $marker = 'CHEZMOI_MANAGED_PWSH_PROFILE_LOADER'
-$managedDir = Join-Path $HOME '.config\powershell'
+$managedDir = Join-Path $HOME '.config' 'powershell'
 $managedProfile = Join-Path $managedDir 'profile.ps1'
 
 $loader = @"
@@ -21,7 +21,7 @@ if (Test-Path -LiteralPath $_localProfile) {
 $profilePath = $null
 try { $profilePath = $PROFILE.CurrentUserAllHosts } catch {}
 
-if ($profilePath) {
+if ($profilePath -ne $managedProfile) {
     $profileDir = Split-Path -Parent $profilePath
     if ($profileDir -and -not (Test-Path -LiteralPath $profileDir)) {
         New-Item -ItemType Directory -Force -Path $profileDir | Out-Null
