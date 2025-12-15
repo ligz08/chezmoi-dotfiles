@@ -1,5 +1,5 @@
 $os = Get-CimInstance -ClassName Win32_OperatingSystem
-Write-Host "Operating system: $($os.OSArchitecture) $($os.Caption) version $($os.Version)"
+Write-Host "Operating system: $($os.OSArchitecture) $($os.Caption) $($os.Version)"
 Write-Host "PowerShell version: $($PSVersionTable.PSVersion)"
 
 Push-Location $PSScriptRoot
