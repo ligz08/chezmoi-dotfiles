@@ -1,0 +1,28 @@
+{{- if eq .chezmoi.os "windows" -}}
+# Create symlink for nvim config on Windows
+# Neovim on Windows looks in ~/AppData/Local/nvim, but we store config in ~/.config/nvim
+
+$source = "{{ .chezmoi.homeDir }}\.config\nvim"
+$target = "{{ .chezmoi.homeDir }}\AppData\Local\nvim"
+
+# Create parent directory if needed
+$parentDir = Split-Path -Parent $target
+if (-not (Test-Path $parentDir)) {
+    New-Item -ItemType Directory -Path $parentDir -Force | Out-Null
+}
+
+# Remove existing target if it exists (file, folder, or symlink)
+if (Test-Path $target) {
+    Remove-Item -Path $target -Recurse -Force
+}
+
+# Create symbolic link (requires admin or Developer Mode enabled)
+try {
+    New-Item -ItemType SymbolicLink -Path $target -Target $source -Force | Out-Null
+    Write-Host "Created symlink: $target -> $source"
+} catch {
+    # Fallback: copy files if symlink fails (no admin rights)
+    Copy-Item -Path $source -Destination $target -Recurse -Force
+    Write-Host "Copied nvim config to $target (symlink failed, using copy)"
+}
+{{ end -}}
