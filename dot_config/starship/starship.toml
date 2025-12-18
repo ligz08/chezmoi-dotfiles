@@ -1,0 +1,97 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$fill\
+$package\
+$cmake\
+$lua\
+$python\
+$rust\
+$azure\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$netns\
+$shell\
+$character"""
+
+# Inserts a blank line before prompt
+add_newline = true
+
+[package]
+disabled = true
+
+[username]
+style_user = 'green bold'
+style_root = 'red bold'
+format = '[$user]($style) '
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+ssh_symbol = "󰢩 "
+trim_at = ''
+format = 'at [$ssh_symbol$hostname](purple bold) '
+disabled = false
+
+[directory]
+truncation_length = 8
+truncate_to_repo = false
+format = 'in [$path]($style) '
+
+[git_branch]
+symbol = '󰊢 '
+style = 'bold yellow'
+format = 'on [$branch]($style) '
+
+[git_commit]
+disabled = true
+
+[git_status]
+disabled = true
+
+[fill]
+symbol = ' '
+
+[python]
+disabled = true
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+version_format = '${raw}'
+symbol = ' '
+style = 'bold blue'
+
+[azure]
+disabled = true
+format = '[$symbol$subscription]($style) '
+
+[battery]
+disabled = true
+
+[status]
+disabled = false
+format ="[$status]($style)"
+
+[container]
+disabled = true
+
+[netns]
+disabled = true
