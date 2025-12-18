@@ -27,12 +27,12 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 8
 vim.opt.termguicolors = true
 
--- Colorscheme
-vim.cmd.colorscheme("slate")
-
 -- Splits
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- Performance
 vim.opt.updatetime = 250
+
+-- Plugin manager
+require("config.lazy")
