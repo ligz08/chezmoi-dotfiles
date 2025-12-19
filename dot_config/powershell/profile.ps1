@@ -1,11 +1,18 @@
+# print OS and PS info
 $os = Get-CimInstance -ClassName Win32_OperatingSystem
 Write-Host "Operating system: $($os.OSArchitecture) $($os.Caption) $($os.Version)"
 Write-Host "PowerShell version: $($PSVersionTable.PSVersion)"
 
-Push-Location $PSScriptRoot
+# display current folder name as window/tab title
+$ExecutionContext.InvokeCommand.LocationChangedAction = {
+	$uiTitle = $PWD | Convert-Path | Split-Path -Leaf
+    $Host.UI.RawUI.WindowTitle = $uiTitle
+}
 
-Get-ChildItem ps*.ps1 | ForEach-Object {. $_.FullName}
+# run ps*.ps1 in this directory
+Join-Path $PSScriptRoot 'ps*.ps1' | Get-ChildItem | ForEach-Object {. $_.FullName}
 
+# custom prompt function -- retired, to be replaced by starship
 function prompt {
     $uiTitle = $PWD | Convert-Path | Split-Path -Leaf
     $Host.UI.RawUI.WindowTitle = $uiTitle
@@ -27,8 +34,6 @@ function prompt {
     return "`nPS $('>' * ($NestedPromptLevel + 1)) "
 }
 
-Pop-Location
-
-# Starship prompt
+# starship prompt
 Invoke-Expression (&starship init powershell)
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship\starship.toml"
