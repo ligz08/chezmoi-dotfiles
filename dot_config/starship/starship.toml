@@ -40,8 +40,8 @@ add_newline = true
 disabled = true
 
 [username]
-style_user = 'green bold'
-style_root = 'red bold'
+style_user = 'green'
+style_root = 'red'
 format = '[$user]($style) '
 disabled = false
 show_always = true
@@ -50,17 +50,19 @@ show_always = true
 ssh_only = false
 ssh_symbol = "󰢩 "
 trim_at = ''
-format = 'at [$ssh_symbol$hostname](purple bold) '
+format = 'at [$ssh_symbol$hostname](purple) '
 disabled = false
 
 [directory]
 truncation_length = 8
 truncate_to_repo = false
 format = 'in [$path]($style) '
+style = 'cyan'
+repo_root_style = 'bold cyan'
 
 [git_branch]
 symbol = '󰊢 '
-style = 'bold yellow'
+style = 'yellow'
 format = 'on [$branch]($style) '
 
 [git_commit]
@@ -77,7 +79,7 @@ disabled = true
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 version_format = '${raw}'
 symbol = ' '
-style = 'bold blue'
+style = 'blue'
 
 [azure]
 disabled = true
