@@ -59,6 +59,7 @@ truncate_to_repo = false
 format = 'in [$path]($style) '
 style = 'cyan'
 repo_root_style = 'bold cyan'
+repo_root_format = 'in [$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style) '
 
 [git_branch]
 symbol = '󰊢 '
