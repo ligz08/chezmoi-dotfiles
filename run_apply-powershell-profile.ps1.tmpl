@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "windows" }}
 $ErrorActionPreference = 'Stop'
 
 $marker = 'CHEZMOI_MANAGED_PWSH_PROFILE_LOADER'
@@ -54,3 +55,4 @@ if ($profilePath -ne $managedProfile) {
         }
     }
 }
+{{- end }}
