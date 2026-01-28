@@ -3,6 +3,7 @@
 
 format = """
 $username\
+$os\
 $hostname\
 $localip\
 $shlvl\
@@ -27,7 +28,6 @@ $jobs\
 $battery\
 $time\
 $status\
-$os\
 $container\
 $netns\
 $shell\
@@ -46,11 +46,20 @@ format = '[$user]($style) '
 disabled = false
 show_always = true
 
+[os]
+disabled = false
+format = 'at [$symbol](purple) '
+
+[os.symbols]
+Windows = ""
+Ubuntu = ""
+Macos = ""
+
 [hostname]
 ssh_only = false
 ssh_symbol = 'ssh'
 trim_at = ''
-format = 'at [$hostname](purple) [\(via [$ssh_symbol](blue)\)]() '
+format = '[$hostname](purple) ([\(via [$ssh_symbol](blue)\)]() )'
 disabled = false
 
 [directory]
