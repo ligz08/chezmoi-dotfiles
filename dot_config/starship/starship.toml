@@ -48,9 +48,9 @@ show_always = true
 
 [hostname]
 ssh_only = false
-ssh_symbol = "󰢩 "
+ssh_symbol = 'ssh'
 trim_at = ''
-format = 'at [$ssh_symbol$hostname](purple) '
+format = 'at [$hostname](purple) [\(via [$ssh_symbol](blue)\)]() '
 disabled = false
 
 [directory]

@@ -1,0 +1,37 @@
+# Unified aliases across shells
+# These will be applied to PowerShell, bash, and fish
+
+[[aliases]]
+alias = "g"
+command = "git"
+
+[[aliases]]
+alias = "l"
+command = "ls"           # bash/fish
+pwsh_command = "Get-ChildItem"  # PowerShell uses different command
+
+[[aliases]]
+alias = "c"
+command = "code"
+
+[[aliases]]
+alias = "cmoi"
+command = "chezmoi"
+
+[[aliases]]
+alias = "v"
+command = "nvim"
+
+[[aliases]]
+alias = "vm"
+command = "nvim"
+
+[[aliases]]
+alias = "nvm"
+command = "nvim"
+
+# PowerShell-only aliases
+[[aliases]]
+alias = "vs"
+command = "devenv"
+pwsh_only = true
