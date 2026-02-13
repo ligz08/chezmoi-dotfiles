@@ -15,13 +15,6 @@ $git_metrics\
 $git_status\
 $fill\
 $package\
-$cmake\
-$lua\
-$python\
-$rust\
-$azure\
-$custom\
-$sudo\
 $cmd_duration\
 $line_break\
 $jobs\
