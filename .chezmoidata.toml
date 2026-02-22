@@ -30,6 +30,10 @@ command = "nvim"
 alias = "nvm"
 command = "nvim"
 
+[[aliases]]
+alias = "lzg"
+command = "lazygit"
+
 # PowerShell-only aliases
 [[aliases]]
 alias = "vs"
