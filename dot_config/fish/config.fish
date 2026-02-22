@@ -6,5 +6,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
-starship init fish | source
+if command -q starship
+    set -gx STARSHIP_CONFIG $XDG_CONFIG_HOME/starship/starship.toml
+    starship init fish | source
+end

@@ -4,7 +4,7 @@
 
 Follow https://www.chezmoi.io/install/
 
-Typpically on Windows:
+Typically on Windows:
 
 ```pwsh
 winget install twpayne.chezmoi
@@ -31,7 +31,7 @@ chezmoi init https://github.com/ligz08/chezmoi-dotfiles.git
 | [tmux](https://github.com/tmux/tmux) | — | `sudo apt install tmux` |
 | [Git](https://git-scm.com/install/) | `winget install --id Git.Git -e --source winget` | `sudo apt-get install git` |
 | [lazygit](https://github.com/jesseduffield/lazygit) | `winget install JesseDuffield.lazygit` | See [releases](https://github.com/jesseduffield/lazygit/releases) |
-| [ripgrip](https://github.com/BurntSushi/ripgrep) | `winget install BurntSushi.ripgrep.MSVC` | `sudo apt-get install ripgrep` <br> or see https://github.com/BurntSushi/ripgrep/releases |
+| [ripgrep](https://github.com/BurntSushi/ripgrep) | `winget install BurntSushi.ripgrep.MSVC` | `sudo apt-get install ripgrep` <br> or see https://github.com/BurntSushi/ripgrep/releases |
 | [fzf](https://github.com/junegunn/fzf) | `winget install junegunn.fzf` | `sudo apt install fzf` |
 | [fd](https://github.com/sharkdp/fd) | `winget install sharkdp.fd` | `sudo apt install fd-find` <br> `ln -s $(which fdfind) ~/.local/bin/fd` |
 | [bat](https://github.com/sharkdp/bat) | `winget install sharkdp.bat` | `sudo apt install bat` <br> `ln -s $(which batcat) ~/.local/bin/bat` |

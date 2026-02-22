@@ -1,7 +1,7 @@
-{{ if ne .chezmoi.os "windows" -}}
-#!/bin/bash
+{{ if eq .chezmoi.os "windows" -}}
 # Git global config - generated from .chezmoidata.toml
 # Do not edit directly; modify .chezmoidata.toml instead
+# hash: {{ include ".chezmoidata.toml" | sha256sum }}
 
 {{ range .git_configs -}}
 git config --global {{ .key }} "{{ .value }}"
