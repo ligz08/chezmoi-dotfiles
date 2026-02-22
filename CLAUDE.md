@@ -41,6 +41,10 @@ Each alias entry supports per-shell overrides:
 - `pwsh_command` -> use a different command on PowerShell
 - `pwsh_only`, `bash_only`, `fish_only` -> restrict to specific shell(s)
 
+### Centralized Git Config
+
+**Git configs are also defined in `.chezmoidata.toml` as `[[git_configs]]` entries.** Two thin run scripts (`run_apply-git-config.sh.tmpl` for Linux, `run_apply-git-config.ps1.tmpl` for Windows) template from this data. This applies settings additively via `git config --global`, preserving local settings like `user.name`.
+
 ### Cross-Platform Scripts
 
 Run scripts use `.tmpl` with OS guards (`{{ if eq .chezmoi.os "windows" }}`) to execute only on the appropriate platform:
@@ -55,7 +59,7 @@ Run scripts use `.tmpl` with OS guards (`{{ if eq .chezmoi.os "windows" }}`) to 
 | Fish | `dot_config/fish/` | Uses starship prompt, abbreviations templated |
 | PowerShell | `dot_config/powershell/` | `profile.ps1` sources `ps*.ps1` files; includes PATH management functions |
 | Neovim | `dot_config/nvim/` | Lua config with lazy.nvim plugin manager |
-| Git | `dot_gitconfig` | Includes `~/org.gitconfig` and `~/private.gitconfig` (not managed here) |
+| Git | `run_apply-git-config.{sh,ps1}.tmpl` | Applied additively via `git config --global`; configs defined in `.chezmoidata.toml` |
 | Starship | `dot_config/starship/starship.toml` | Shared prompt across fish and PowerShell |
 | tmux | `dot_config/tmux/tmux.conf` | Prefix is `Ctrl-Space`, vim-style navigation |
 
@@ -66,6 +70,9 @@ Uses [lazy.nvim](https://github.com/folke/lazy.nvim) with plugin specs in `dot_c
 ## When Adding New Configuration
 
 - **New alias**: Add an `[[aliases]]` entry to `.chezmoidata.toml` -- all shell alias files regenerate automatically.
+- **New git config**: Add a `[[git_configs]]` entry to `.chezmoidata.toml` with `key` and `value` fields.
 - **New config file**: Use `chezmoi add` or manually create with proper `dot_` prefix naming.
 - **Platform-specific logic**: Use `.tmpl` suffix with `{{ if eq .chezmoi.os "windows" }}` / `{{ if eq .chezmoi.os "linux" }}` guards.
+- **Cross-platform run scripts**: For identical commands on both OSes, define data in `.chezmoidata.toml` and create paired `.sh.tmpl` / `.ps1.tmpl` scripts with OS guards to avoid duplication.
+- **Repo-only files**: Add to `.chezmoiignore` so `chezmoi apply` skips them (e.g., `LICENSE`, `README.md`, `CLAUDE.md`).
 - **New Neovim plugin**: Add a plugin spec table to `dot_config/nvim/lua/plugins/init.lua`.
