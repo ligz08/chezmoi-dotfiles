@@ -90,7 +90,6 @@ fi
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -116,4 +115,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-. "$HOME/.local/share/../bin/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# starship prompt
+if command -v starship &>/dev/null; then
+    export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+    eval "$(starship init bash)"
+fi
