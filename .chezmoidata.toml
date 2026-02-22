@@ -39,3 +39,69 @@ command = "lazygit"
 alias = "vs"
 command = "devenv"
 pwsh_only = true
+
+# Git global configs
+# Applied additively via `git config --global`, won't overwrite local settings like user.name
+[[git_configs]]
+key = "alias.s"
+value = "status"
+
+[[git_configs]]
+key = "alias.o"
+value = "checkout"
+
+[[git_configs]]
+key = "alias.co"
+value = "checkout"
+
+[[git_configs]]
+key = "alias.nb"
+value = "checkout -b"
+
+[[git_configs]]
+key = "alias.ff"
+value = "pull --ff-only"
+
+[[git_configs]]
+key = "alias.behind"
+value = "rev-list --count"
+
+[[git_configs]]
+key = "alias.ddb"
+value = "branch -D"
+
+[[git_configs]]
+key = "alias.db"
+value = "branch -d"
+
+[[git_configs]]
+key = "alias.l"
+value = "log --oneline --graph"
+
+[[git_configs]]
+key = "alias.c"
+value = "commit"
+
+[[git_configs]]
+key = "alias.cm"
+value = "commit -m"
+
+[[git_configs]]
+key = "alias.b"
+value = "branch"
+
+[[git_configs]]
+key = "alias.m"
+value = "merge"
+
+[[git_configs]]
+key = "alias.f"
+value = "fetch"
+
+[[git_configs]]
+key = "alias.a"
+value = "add"
+
+[[git_configs]]
+key = "push.autoSetupRemote"
+value = "true"

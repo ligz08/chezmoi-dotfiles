@@ -1,0 +1,8 @@
+{{ if eq .chezmoi.os "windows" -}}
+# Git global config - generated from .chezmoidata.toml
+# Do not edit directly; modify .chezmoidata.toml instead
+
+{{ range .git_configs -}}
+git config --global {{ .key }} "{{ .value }}"
+{{ end -}}
+{{ end -}}
