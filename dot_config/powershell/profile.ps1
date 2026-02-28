@@ -4,10 +4,12 @@ Write-Host "Operating system: $($os.OSArchitecture) $($os.Caption) $($os.Version
 Write-Host "PowerShell version: $($PSVersionTable.PSVersion)"
 
 # display current folder name as window/tab title
-$ExecutionContext.InvokeCommand.LocationChangedAction = {
-	$uiTitle = $PWD | Convert-Path | Split-Path -Leaf
+function Set-WindowTitle {
+    $uiTitle = $PWD | Convert-Path | Split-Path -Leaf
     $Host.UI.RawUI.WindowTitle = $uiTitle
 }
+$ExecutionContext.InvokeCommand.LocationChangedAction = { Set-WindowTitle }
+Set-WindowTitle
 
 # run ps*.ps1 in this directory
 Join-Path $PSScriptRoot 'ps*.ps1' | Get-ChildItem | ForEach-Object {. $_.FullName}
