@@ -35,7 +35,7 @@ chezmoi init https://github.com/ligz08/chezmoi-dotfiles.git
 | [fzf](https://github.com/junegunn/fzf) | `winget install junegunn.fzf` | `sudo apt install fzf` |
 | [fd](https://github.com/sharkdp/fd) | `winget install sharkdp.fd` | `sudo apt install fd-find` <br> `ln -s $(which fdfind) ~/.local/bin/fd` |
 | [bat](https://github.com/sharkdp/bat) | `winget install sharkdp.bat` | `sudo apt install bat` <br> `ln -s $(which batcat) ~/.local/bin/bat` |
-| [jq](https://github.com/jqlang/jq) | `winget install stedolan.jq` | `sudo apt install jq` |
+| [jq](https://github.com/jqlang/jq) | `winget install jqlang.jq` | `sudo apt install jq` |
 | [yq](https://github.com/mikefarah/yq) | `winget install MikeFarah.yq` | `snap install yq` |
 | [Neovim](https://neovim.io/doc/install/) | `winget install Neovim.Neovim` | `sudo apt install neovim` |
 | [uv](https://docs.astral.sh/uv/getting-started/installation/) | `irm https://astral.sh/uv/install.ps1 \| iex` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
