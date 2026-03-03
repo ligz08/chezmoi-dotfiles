@@ -105,3 +105,20 @@ value = "add"
 [[git_configs]]
 key = "push.autoSetupRemote"
 value = "true"
+
+# Delta pager for better diffs
+[[git_configs]]
+key = "core.pager"
+value = "delta"
+
+[[git_configs]]
+key = "interactive.diffFilter"
+value = "delta --color-only"
+
+[[git_configs]]
+key = "delta.navigate"
+value = "true"
+
+[[git_configs]]
+key = "delta.side-by-side"
+value = "true"
