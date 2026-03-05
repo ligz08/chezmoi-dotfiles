@@ -63,6 +63,10 @@ key = "alias.ff"
 value = "pull --ff-only"
 
 [[git_configs]]
+key = "alias.ffp"
+value = "pull --ff-only --prune"
+
+[[git_configs]]
 key = "alias.behind"
 value = "rev-list --count"
 
@@ -101,6 +105,10 @@ value = "fetch"
 [[git_configs]]
 key = "alias.a"
 value = "add"
+
+[[git_configs]]
+key = "alias.wtl"
+value = "worktree list"
 
 [[git_configs]]
 key = "push.autoSetupRemote"
