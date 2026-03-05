@@ -80,7 +80,7 @@ value = "branch -d"
 
 [[git_configs]]
 key = "alias.l"
-value = "log --oneline --graph"
+value = "log --oneline --graph HEAD origin/HEAD"
 
 [[git_configs]]
 key = "alias.c"
