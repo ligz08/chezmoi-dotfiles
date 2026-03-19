@@ -27,10 +27,6 @@ alias = "vm"
 command = "nvim"
 
 [[aliases]]
-alias = "nvm"
-command = "nvim"
-
-[[aliases]]
 alias = "lzg"
 command = "lazygit"
 
