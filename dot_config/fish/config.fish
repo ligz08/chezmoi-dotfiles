@@ -10,3 +10,9 @@ if command -q starship
     set -gx STARSHIP_CONFIG $XDG_CONFIG_HOME/starship/starship.toml
     starship init fish | source
 end
+
+# fnm
+if test -d $HOME/.local/share/fnm
+    fish_add_path $HOME/.local/share/fnm
+    fnm env --shell fish | source
+end
