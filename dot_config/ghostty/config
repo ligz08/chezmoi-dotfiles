@@ -50,3 +50,25 @@
 command = /usr/bin/fish
 mouse-scroll-multiplier = discrete:1
 
+# Color scheme: Dimidium by dofuuz
+# https://github.com/dofuuz/dimidium
+background = #141414
+foreground = #BAB7B6
+palette = 0=#000000
+palette = 1=#CF494C
+palette = 2=#60B442
+palette = 3=#DB9C11
+palette = 4=#0575D8
+palette = 5=#AF5ED2
+palette = 6=#1DB6BB
+palette = 7=#BAB7B6
+palette = 8=#817E7E
+palette = 9=#FF643B
+palette = 10=#37E57B
+palette = 11=#FCCD1A
+palette = 12=#688DFD
+palette = 13=#ED6FE9
+palette = 14=#32E0FB
+palette = 15=#DEE3E4
+selection-background = #8DB8E5
+
