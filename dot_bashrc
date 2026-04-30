@@ -2,6 +2,13 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# fnm PATH — before interactive guard so non-interactive shells
+# (e.g. Claude Code, hooks) also get node/npm in PATH
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+    export PATH="$FNM_PATH:$HOME/.local/share/fnm/aliases/default/bin:$PATH"
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -123,10 +130,8 @@ if command -v starship &>/dev/null; then
     eval "$(starship init bash)"
 fi
 
-# fnm
-FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
+# fnm env (interactive — sets up shims, completions)
+if [ -d "$FNM_PATH" ] && command -v fnm &>/dev/null; then
   eval "$(fnm env --shell bash)"
 fi
 
