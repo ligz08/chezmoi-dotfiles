@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code status line
+# Docs: https://code.claude.com/docs/en/statusline
 # Format: <model>@<effort>(orange) in <dir>(cyan) on 󰊢 <branch>(yellow) amid <id>(mauve) using <pie> <pct>% context
 
 # Colors
@@ -17,7 +18,8 @@ input=$(cat)
 # Extract fields via jq
 MODEL=$(echo "$input" | jq -r '.model.id // "?"')
 SESSION_ID=$(echo "$input" | jq -r '.session_id // empty')
-EFFORT=$(jq -r '.effortLevel // empty' ~/.claude/settings.json 2>/dev/null)
+EFFORT=$(echo "$input" | jq -r '.effort.level // empty')
+[ -z "$EFFORT" ] && EFFORT=$(jq -r '.effortLevel // empty' ~/.claude/settings.json 2>/dev/null)
 DIR=$(echo "$input" | jq -r '.workspace.current_dir // empty')
 PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 
