@@ -23,7 +23,16 @@ EFFORT=$(echo "$input" | jq -r '.effort.level // empty')
 DIR=$(echo "$input" | jq -r '.workspace.current_dir // empty')
 PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 
-# Shorten directory: replace $HOME with ~
+# Convert Windows backslashes to forward slashes so printf %b doesn't
+# interpret sequences like \b (backspace), \a, \t, etc. in the path.
+# Also avoids backslash-as-escape issues in the prefix substitution below.
+DIR="${DIR//'\'//}"
+# Shorten home directory to ~. DIR arrives as a Windows path (C:\Users\...)
+# while $HOME under Git Bash is /c/Users/... — derive a forward-slash home
+# from USERPROFILE so the prefix matches.
+HOME_WIN="${USERPROFILE:-$HOME}"
+HOME_WIN="${HOME_WIN//'\'//}"
+DIR="${DIR/#$HOME_WIN/\~}"
 DIR="${DIR/#$HOME/\~}"
 
 # Git branch
