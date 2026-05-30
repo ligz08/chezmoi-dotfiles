@@ -1,6 +1,14 @@
 # print OS and PS info
-$os = Get-CimInstance -ClassName Win32_OperatingSystem
-Write-Host "Operating system: $($os.OSArchitecture) $($os.Caption) $($os.Version)"
+$arch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture
+if ($IsWindows) {
+    $os = Get-CimInstance -ClassName Win32_OperatingSystem
+    Write-Host "Operating system: $($os.OSArchitecture) $($os.Caption) $($os.Version)"
+} elseif ($IsLinux) {
+    $pretty = (Get-Content /etc/os-release | ConvertFrom-StringData).PRETTY_NAME.Trim('"')
+    Write-Host "Operating system: $arch $pretty $(uname -r)"
+} elseif ($IsMacOS) {
+    Write-Host "Operating system: $arch $(sw_vers -productName) $(sw_vers -productVersion)"
+}
 Write-Host "PowerShell version: $($PSVersionTable.PSVersion)"
 
 # display current folder name as window/tab title
