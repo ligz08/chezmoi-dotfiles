@@ -22,6 +22,11 @@ EFFORT=$(echo "$input" | jq -r '.effort.level // empty')
 [ -z "$EFFORT" ] && EFFORT=$(jq -r '.effortLevel // empty' ~/.claude/settings.json 2>/dev/null)
 DIR=$(echo "$input" | jq -r '.workspace.current_dir // empty')
 PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
+INPUT_TOKENS=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
+OUTPUT_TOKENS=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
+MAX_TOKENS=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
+USED_K=$(( (INPUT_TOKENS + OUTPUT_TOKENS) / 1000 ))
+MAX_K=$(( MAX_TOKENS / 1000 ))
 
 # Convert Windows backslashes to forward slashes so printf %b doesn't
 # interpret sequences like \b (backspace), \a, \t, etc. in the path.
@@ -66,6 +71,6 @@ if [ -n "$BRANCH" ]; then
     LINE="${LINE} on ${YELLOW}󰊢 ${BRANCH}${RESET}"
 fi
 [ -n "$SESSION_ID" ] && LINE="${LINE} amid ${MAUVE}${SESSION_ID}${RESET}"
-LINE="${LINE} using ${CTX_COLOR}${PIE_ICON} ${PCT}%${RESET} context"
+LINE="${LINE} using ${CTX_COLOR}${PIE_ICON} ${PCT}% (${USED_K}k/${MAX_K}k)${RESET} context"
 
 printf '%b\n' "$LINE"

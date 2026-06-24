@@ -41,3 +41,9 @@ Use these instead of their traditional counterparts:
 
 - When running a background task, report progress in 30s–120s intervals depending on needs
 - When waiting for anything (builds, downloads, pipelines), always wait in background — never block the conversation
+
+## Mindset
+
+- Growth mindset
+- Abundance mindset
+
