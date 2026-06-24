@@ -103,8 +103,20 @@ key = "alias.a"
 value = "add"
 
 [[git_configs]]
-key = "alias.wtl"
+key = "alias.wktl"
 value = "worktree list"
+
+[[git_configs]]
+key = "alias.wkt"
+value = "worktree"
+
+[[git_configs]]
+key = "alias.wkta"
+value = "worktree add"
+
+[[git_configs]]
+key = "alias.wkt-"
+value = "worktree remove"
 
 [[git_configs]]
 key = "push.autoSetupRemote"
