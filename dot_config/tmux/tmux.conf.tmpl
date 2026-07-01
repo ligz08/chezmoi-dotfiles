@@ -1,8 +1,6 @@
 # use 24-bit true color (if terminal emulator supports)
 set-option -sa terminal-overrides ",xterm*:Tc"
 
-# mouse off -- fully keyboard-driven (casual scroll falls through to the terminal;
-# use prefix + [ for copy-mode scroll/selection)
 set -g mouse off
 
 # start window/pane numbering at 1
@@ -28,10 +26,10 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
-bind -r H resize-pane -L 2
-bind -r J resize-pane -D 2
-bind -r K resize-pane -U 2
-bind -r L resize-pane -R 2
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
 
 # Status bar at top of screen
 set -g status-position top
@@ -54,20 +52,24 @@ setw -g window-status-current-format '#[fg=#00A362,bold] #I:#W#{?window_zoomed_f
 
 # --- copy mode (vi) ---
 setw -g mode-keys vi
-# let tmux push copies to the outer terminal via OSC 52 (works over SSH too)
 set -g set-clipboard on
 
-# scroll 10 lines at a time with J/K
 bind -T copy-mode-vi J send-keys -X -N 10 scroll-down
 bind -T copy-mode-vi K send-keys -X -N 10 scroll-up
 
-# vim-style selection + yank to Windows clipboard (win32yank) AND tmux buffer
 bind -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
-bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "win32yank.exe -i --crlf"
-bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "win32yank.exe -i --crlf"
+{{ $clip := "xclip -selection clipboard -in" -}}
+{{ if eq .chezmoi.os "darwin" -}}
+{{ $clip = "pbcopy" -}}
+{{ else if eq .chezmoi.os "linux" -}}
+{{ if contains "microsoft" (lower .chezmoi.kernel.osrelease) -}}
+{{ $clip = "win32yank.exe -i --crlf" -}}
+{{ end -}}
+{{ end -}}
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "{{ $clip }}"
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "{{ $clip }}"
 
-# paste tmux buffer inside a pane: prefix + ]
 bind ] paste-buffer -p
 
 # plugins
@@ -76,18 +78,12 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 
-# Extrakto: prefix + u (or Tab) -> fuzzy-grab URLs/paths/tokens from the pane
-#   Enter=insert into pane  |  Tab=copy to clipboard  |  Ctrl-o=open (URLs)
+# extrakto: fuzzy-pick URLs/paths/tokens from the pane
 set -g @plugin 'laktak/extrakto'
 set -g @extrakto_key 'u'
-set -g @extrakto_clip_tool 'win32yank.exe -i --crlf'
-set -g @extrakto_open_tool 'wslview'
-# Ctrl-f cycles these modes (first = default on open): urls -> paths -> words -> whole lines -> all
 set -g @extrakto_filter_order 'url path word line all'
-# start narrow; Ctrl-g cycles: recent -> window recent -> full -> window full
-# (single-pane windows auto-skip the redundant "window" steps)
 set -g @extrakto_grab_area 'recent'
-# keep the familiar prefix+Tab as a second trigger alongside @extrakto_key
+# @extrakto_key binds one key; add Tab as a second trigger
 bind Tab run-shell "$XDG_CONFIG_HOME/tmux/plugins/extrakto/scripts/open.sh \"#{pane_id}\""
 
 # Resurrect: save/restore sessions across restarts
