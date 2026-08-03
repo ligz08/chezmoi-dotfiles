@@ -50,6 +50,9 @@
 command = /usr/bin/fish
 mouse-scroll-multiplier = discrete:1
 
+# Keybindings (ctrl+enter remains bound to toggle_fullscreen by default)
+keybind = f11=toggle_fullscreen
+
 # Color scheme: Dimidium by dofuuz
 # https://github.com/dofuuz/dimidium
 background = #141414
