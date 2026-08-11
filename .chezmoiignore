@@ -2,6 +2,9 @@ LICENSE
 README.md
 CLAUDE.md
 
+# left to installers (Agency etc. append MANAGED BLOCKs); real config lives in conf.d/
+.config/fish/config.fish
+
 {{ if eq .chezmoi.os "windows" }}
 dot_bashrc
 dot_bash_aliases.tmpl
