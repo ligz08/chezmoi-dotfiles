@@ -81,7 +81,7 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 # extrakto: fuzzy-pick URLs/paths/tokens from the pane
 set -g @plugin 'laktak/extrakto'
 set -g @extrakto_key 'u'
-set -g @extrakto_filter_order 'url path word line all'
+set -g @extrakto_filter_order 'word url path line all'
 set -g @extrakto_grab_area 'recent'
 # @extrakto_key binds one key; add Tab as a second trigger
 bind Tab run-shell "$XDG_CONFIG_HOME/tmux/plugins/extrakto/scripts/open.sh \"#{pane_id}\""
