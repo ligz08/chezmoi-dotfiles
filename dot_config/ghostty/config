@@ -50,6 +50,10 @@
 command = /usr/bin/fish
 mouse-scroll-multiplier = discrete:1
 
+# Spread leftover sub-cell pixels across all edges instead of piling them
+# on the bottom/right, which reads as a stray blank line under the last row
+window-padding-balance = true
+
 # Keybindings (ctrl+enter remains bound to toggle_fullscreen by default)
 keybind = f11=toggle_fullscreen
 
