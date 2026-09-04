@@ -9,6 +9,9 @@ if [ -d "$FNM_PATH" ]; then
     export PATH="$FNM_PATH:$HOME/.local/share/fnm/aliases/default/bin:$PATH"
 fi
 
+# Share Claude Code personal skills with GitHub Copilot CLI.
+export COPILOT_SKILLS_DIRS="$HOME/.claude/skills"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
