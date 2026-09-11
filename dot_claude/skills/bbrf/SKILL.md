@@ -17,6 +17,10 @@ Ask what that reader gets from a sentence. Most of what feels worth saying today
 
 Give enough to work it out, not enough to follow along. Over-specifying insults the reader and buries the part they actually needed.
 
+## Write to help the reader, not because it felt good to write
+
+A sentence earns its place by changing what the reader knows or does. The restatement of the line above, the worked example of something already plain, the clever aside, the flourish you liked — those serve the writer. Cut them.
+
 ## Journey or state
 
 Write what is. A journey — what it used to be, what was tried, how it got here — needs a reason to be on the page, and usually does not have one.
