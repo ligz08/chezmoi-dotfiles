@@ -33,9 +33,6 @@ MODEL=$(jq_first '[.model.id?, .model?, .modelId?, .currentModel.id?, .session.m
 
 SESSION_ID=$(jq_first '[.session_id?, .sessionId?, .session.id?, .id?] | map(select(type == "string" and length > 0))[0] // empty')
 
-EFFORT=$(jq_first '[.effort.level?, .effortLevel?, .reasoningEffort?, .model.effort?] | map(select(type == "string" and length > 0))[0] // empty')
-[ -z "$EFFORT" ] && EFFORT=$(jq -r '.effortLevel // empty' ~/.copilot/settings.json 2>/dev/null)
-
 RAW_DIR=$(jq_first '[.workspace.current_dir?, .workspace.currentDir?, .workspace.cwd?, .cwd?, .current_dir?, .directory?] | map(select(type == "string" and length > 0))[0] // empty')
 [ -z "$RAW_DIR" ] && RAW_DIR="$PWD"
 DIR="${RAW_DIR//\\//}"
@@ -81,9 +78,7 @@ PIE_IDX=$(( PCT * 7 / 100 ))
 [ "$PIE_IDX" -gt 7 ] && PIE_IDX=7
 PIE_ICON="${PIE_ICONS[$PIE_IDX]}"
 
-LINE="${ORANGE}${MODEL}"
-[ -n "$EFFORT" ] && LINE="${LINE}@${EFFORT}"
-LINE="${LINE}${RESET}"
+LINE="${ORANGE}${MODEL}${RESET}"
 LINE="${LINE} in ${CYAN}${DIR}${RESET}"
 if [ -n "$BRANCH" ]; then
     LINE="${LINE} on ${YELLOW}󰊢 ${BRANCH}${RESET}"
