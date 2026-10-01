@@ -15,7 +15,7 @@ set -g prefix C-Space
 bind C-Space send-prefix
 
 # prefix-r to reload config
-bind r source-file $XDG_CONFIG_HOME/tmux/tmux.conf \; display "reloaded tmux config $XDG_CONFIG_HOME/tmux/tmux.conf"
+bind r source-file ~/.config/tmux/tmux.conf \; display "reloaded tmux config ~/.config/tmux/tmux.conf"
 
 # split pane with | and =, and keep current path
 bind | split-window -h -c "${pane_current_path}"

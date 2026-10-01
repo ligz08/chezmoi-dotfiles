@@ -47,7 +47,6 @@
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
-command = /usr/bin/fish
 mouse-scroll-multiplier = discrete:1
 
 # Spread leftover sub-cell pixels across all edges instead of piling them
