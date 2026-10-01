@@ -21,6 +21,10 @@ Give enough to work it out, not enough to follow along. Over-specifying insults 
 
 A sentence earns its place by changing what the reader knows or does. The restatement of the line above, the worked example of something already plain, the clever aside, the flourish you liked — those serve the writer. Cut them.
 
+## Do not cleft
+
+A cleft splits one clause in two to front part of it: "it is X that Y", "what Y does is X", "X is what/where/when Y does". The plain clause is shorter and says the same. Cleft to contrast or to correct: if every sentence is focused, none is.
+
 ## Journey or state
 
 Write what is. A journey — what it used to be, what was tried, how it got here — needs a reason to be on the page, and usually does not have one.

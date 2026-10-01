@@ -5,7 +5,15 @@ description: What the user has authorized this session — committing, pushing, 
 
 # Rules of engagement
 
-The session's rules live in `~/.claude/roe/$CLAUDE_CODE_SESSION_ID.md`.
+The session's rules live in `~/.claude/roe/<session-id>.md`.
+
+Resolve `<session-id>` from the first non-empty environment variable in this order:
+
+1. `CLAUDE_CODE_SESSION_ID`
+2. `COPILOT_AGENT_SESSION_ID`
+3. `AGENCY_SESSION_ID`
+
+If none is set, ask the user instead of guessing. `COPILOT_AGENT_SESSION_ID` and `AGENCY_SESSION_ID` are the Copilot CLI equivalents of `CLAUDE_CODE_SESSION_ID`.
 
 - `/roe` — show what is in force.
 - `/roe <rule>` — merge it into the set, newer winning on conflict, then show the result.
