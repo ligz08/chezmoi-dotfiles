@@ -85,7 +85,7 @@ if [ -n "$BRANCH" ]; then
     LINE="${LINE} on ${YELLOW}󰊢 ${BRANCH}${RESET}"
 fi
 if [ -n "$SESSION_NAME" ] && [ -n "$SESSION_ID" ]; then
-    LINE="${LINE} amid ${MAUVE}${SESSION_NAME} · ${SESSION_ID}${RESET}"
+    LINE="${LINE} amid ${MAUVE}${SESSION_NAME} ${SESSION_ID}${RESET}"
 elif [ -n "$SESSION_ID" ]; then
     LINE="${LINE} amid ${MAUVE}${SESSION_ID}${RESET}"
 fi
