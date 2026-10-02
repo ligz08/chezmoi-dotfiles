@@ -31,6 +31,7 @@ MODEL=$(jq_first '[.model.id?, .model?, .modelId?, .currentModel.id?, .session.m
 [ -z "$MODEL" ] && MODEL=$(jq -r '.model // "?"' ~/.copilot/settings.json 2>/dev/null)
 [ -z "$MODEL" ] && MODEL="?"
 
+SESSION_NAME=$(jq_first '[.session_name?, .sessionName?, .session.name?] | map(select(type == "string" and length > 0))[0] // empty')
 SESSION_ID=$(jq_first '[.session_id?, .sessionId?, .session.id?, .id?] | map(select(type == "string" and length > 0))[0] // empty')
 
 RAW_DIR=$(jq_first '[.workspace.current_dir?, .workspace.currentDir?, .workspace.cwd?, .cwd?, .current_dir?, .directory?] | map(select(type == "string" and length > 0))[0] // empty')
@@ -83,7 +84,11 @@ LINE="${LINE} in ${CYAN}${DIR}${RESET}"
 if [ -n "$BRANCH" ]; then
     LINE="${LINE} on ${YELLOW}󰊢 ${BRANCH}${RESET}"
 fi
-[ -n "$SESSION_ID" ] && LINE="${LINE} amid ${MAUVE}${SESSION_ID}${RESET}"
+if [ -n "$SESSION_NAME" ] && [ -n "$SESSION_ID" ]; then
+    LINE="${LINE} amid ${MAUVE}${SESSION_NAME} · ${SESSION_ID}${RESET}"
+elif [ -n "$SESSION_ID" ]; then
+    LINE="${LINE} amid ${MAUVE}${SESSION_ID}${RESET}"
+fi
 LINE="${LINE} using ${CTX_COLOR}${PIE_ICON} ${PCT}% (${USED_K}k/${MAX_K}k)${RESET} context"
 
 printf '%b\n' "$LINE"
