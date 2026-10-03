@@ -4,6 +4,10 @@
 
 - Prefer single quotes over double quotes in Python
 
+## Line Breaks
+
+- Follow `/sembr`
+
 ## Git Commit
 
 - Keep commit messages concise (1-liner)
@@ -46,4 +50,3 @@ Use these instead of their traditional counterparts:
 
 - Growth mindset
 - Abundance mindset
-

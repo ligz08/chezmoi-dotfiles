@@ -6,7 +6,7 @@
 
 ## Line Breaks
 
-In prose, markdown and code comments: break at a sentence end or a `,` `;` `:` / em-dash, or leave the paragraph on one long line. Never wrap to a column — text hard-wrapped at 100 characters is ragged in any narrower view, while a long line soft-wraps to the reader's.
+- Follow `/sembr`
 
 ## Git Commit
 
