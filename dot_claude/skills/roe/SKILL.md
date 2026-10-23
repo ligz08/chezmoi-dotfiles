@@ -17,7 +17,7 @@ If none is set, ask the user instead of guessing. `COPILOT_AGENT_SESSION_ID` and
 
 - `/roe` — show what is in force.
 - `/roe <rule>` — merge it into the set, newer winning on conflict, then show the result.
-  Keep the user's wording; ask instead of guessing when the merged set cannot be enforced.
+  Keep the user's intent in unambiguous wording, naming roles ("the user", "the agent") rather than pronouns; ask instead of guessing when the intent or the merged set cannot be enforced.
 - `/roe clear` — show what is in force, confirm, then delete the file.
   In the same `AskUserQuestion`, list the other files in `~/.claude/roe/` with their dates and delete the ones the user picks.
 
